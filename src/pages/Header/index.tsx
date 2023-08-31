@@ -1,8 +1,8 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <div className="min-h-full flex items-stretch">
+    <div className="flex min-h-full items-stretch">
       <main className="min-w-full ">
         <Outlet />
       </main>

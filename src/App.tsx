@@ -1,12 +1,15 @@
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from 'react-router-dom';
 import Header from './pages/Header';
 
-
-import './App.css'
+import './App.css';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,18 +17,16 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
-    </Route>
-  )
-)
+    </Route>,
+  ),
+);
 
 function App() {
-  
-
   return (
     <>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
