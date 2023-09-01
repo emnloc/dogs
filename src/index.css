@@ -5,5 +5,5 @@
 html,
 body {
   font-family: 'Roboto', sans-serif;
-  @apply font-thin;
+  @apply font-light;
 }
