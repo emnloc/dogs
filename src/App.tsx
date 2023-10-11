@@ -10,6 +10,8 @@ import './App.css';
 import Home from './pages/Home';
 import Login from './pages/Login';
 
+console.log(import.meta.env.DEV)
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Header />}>
@@ -17,6 +19,7 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login />} />
     </Route>,
   ),
+  { basename:  import.meta.env.DEV ? '/' : '/dogs' },
 );
 
 function App() {
