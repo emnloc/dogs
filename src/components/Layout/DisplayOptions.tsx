@@ -1,4 +1,26 @@
-const DisplayOptions = () => {
+import { useState } from 'react';
+
+export type directionType = 'asc' | 'desc';
+
+const DisplayOptions = ({
+  onChangeSorting,
+  onOpenFilter,
+}: {
+  onChangeSorting: (dir: directionType) => void;
+  onOpenFilter: (open: boolean) => void;
+
+}) => {
+  const [direction, setDirection] = useState<directionType>('asc');
+
+  const selectDirection = (dir: directionType) => {
+    setDirection(dir);
+    onChangeSorting(dir);
+  };
+
+  const toggleFilter = (open: boolean) => {
+    onOpenFilter(open);
+  }
+
   return (
     <div className="flex items-center">
       <div className="group/filter relative inline-block text-left">
@@ -26,17 +48,6 @@ const DisplayOptions = () => {
           </label>
         </div>
 
-        {/*
-    Dropdown menu, show/hide based on menu state.
-
-    Entering: "transition ease-out duration-100"
-      From: "transform opacity-0 scale-95"
-      To: "transform opacity-100 scale-100"
-    Leaving: "transition ease-in duration-75"
-      From: "transform opacity-100 scale-100"
-      To: "transform opacity-0 scale-95"
-  */}
-        {/* <input type="checkbox" id="sortSelector" className="peer hidden" /> */}
         <div
           className="absolute right-0 z-10 hidden w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none group-hover/filter:block"
           role="menu"
@@ -44,27 +55,27 @@ const DisplayOptions = () => {
           aria-labelledby="menu-button"
         >
           <div className="py-1" role="none">
-            {/*
-        Active: "bg-gray-100", Not Active: ""
 
-        Selected: "font-medium text-gray-900", Not Selected: "text-gray-500"
-      */}
-            <a
-              href="#"
-              className="block bg-gray-100 px-4 py-2 text-sm font-medium text-gray-900"
-              role="menuitem"
+            <span
+              className={`block bg-gray-100 px-4 py-2 text-sm ${
+                direction === 'asc' ? 'font-medium text-gray-900' : ''
+              } `}
+              role="button"
               id="menu-item-3"
+              onClick={() => selectDirection('asc')}
             >
               Breed: Asc
-            </a>
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-500"
-              role="menuitem"
+            </span>
+            <span
+              className={`block px-4 py-2 text-sm text-gray-500 ${
+                direction === 'desc' ? 'font-medium text-gray-900' : ''
+              }`}
+              role="button"
               id="menu-item-4"
+              onClick={() => selectDirection('desc')}
             >
               Breed: Desc
-            </a>
+            </span>
           </div>
         </div>
       </div>
@@ -72,6 +83,7 @@ const DisplayOptions = () => {
       <button
         type="button"
         className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
+        onClick={() => toggleFilter(true)}
       >
         <span className="sr-only">Filters</span>
         <svg

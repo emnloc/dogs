@@ -1,4 +1,4 @@
-const Loader = () => {
+const Spinner = () => {
   return (
     <div role="status" className="flex items-center justify-center">
       <svg
@@ -18,6 +18,14 @@ const Loader = () => {
         />
       </svg>
       <span className="sr-only">Loading...</span>
+    </div>
+  );
+};
+
+export const Loader = () => {
+  return (
+    <div className="flex min-h-full min-w-full items-center justify-center">
+      <Spinner />
     </div>
   );
 };

@@ -1,11 +1,7 @@
 import useSWR, { Fetcher } from 'swr';
 import API from '../utils/API';
 
-interface User {
-  id: string;
-}
-
-const fetcher: Fetcher<User, string> = url => API(url);
+const fetcher: Fetcher<string[], string> = url => API(url);
 
 function useBreeds() {
   const { data, error, isLoading } = useSWR(`/dogs/breeds`, fetcher);

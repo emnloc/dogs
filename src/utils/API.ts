@@ -31,7 +31,7 @@ export class RequestError extends Error {
 const API = async (
   url: string,
   method = 'GET',
-  params: Record<string, unknown> = {},
+  params: Record<string, unknown> | unknown = {},
   headers: Record<string, string> = {},
 ) => {
   console.log(`${API_URL}${url}`);

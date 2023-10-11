@@ -33,7 +33,7 @@ const Login = () => {
         console.log(error);
       }
     },
-    [],
+    [navigate],
   );
 
   return (
