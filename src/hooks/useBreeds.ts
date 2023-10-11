@@ -8,7 +8,7 @@ function useBreeds() {
 
   if (error) {
     if (error.status === 401) {
-      location.replace('/login');
+      location.replace('login');
     }
   }
 
