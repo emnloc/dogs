@@ -1,8 +1,8 @@
 import {
   Route,
-  createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
+  createHashRouter,
 } from 'react-router-dom';
 import Header from './pages/Header';
 
@@ -12,14 +12,13 @@ import Login from './pages/Login';
 
 console.log(import.meta.env.DEV);
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<Header />}>
       <Route index element={<Home />} />
       <Route path="login" element={<Login />} />
     </Route>,
   ),
-  { basename: '/dogs' },
 );
 
 function App() {

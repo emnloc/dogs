@@ -27,8 +27,6 @@ const DogsList = ({
     from
   });
 
-  console.log(next, total);
-
   if (isLoading) {
     return <Loader />;
   }
